@@ -104,8 +104,23 @@ const Index = ({ inspection, inspectionBarChart }) => {
                                                         ins.department_office_inspected
                                                     }
                                                 </td>
-                                                <td className="px-6 py-4">
-                                                    {ins.compliance_rating}
+                                                <td className="px-6 py-4 whitespace-nowrap">
+                                                    <span
+                                                        className={`${
+                                                            ins.compliance_rating ===
+                                                            "Fully Compliant"
+                                                                ? "bg-green-500"
+                                                                : ins.compliance_rating ===
+                                                                  "Needs Improvement"
+                                                                ? "bg-yellow-500"
+                                                                : ins.compliance_rating ===
+                                                                  "Non-Compliant"
+                                                                ? "bg-red-500"
+                                                                : "bg-gray-500"
+                                                        } py-1 px-2 rounded-full text-white text-xs`}
+                                                    >
+                                                        {ins.compliance_rating}
+                                                    </span>
                                                 </td>
                                                 <td className="px-6 py-4">
                                                     <Link
