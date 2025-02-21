@@ -1,19 +1,29 @@
-const StatCard = ({ title, value, icon, bgColor, children, desc }) => {
+const StatCard = ({
+    title,
+    value,
+    icon,
+    bgColor,
+    txColor,
+    txSize,
+    valColor,
+    children,
+    desc,
+}) => {
     return (
-        <div
-            className={`p-6 ${bgColor} rounded-lg shadow-md flex flex-col`}
-        >
+        <div className={`p-6 ${bgColor} rounded-lg shadow-md flex flex-col`}>
             <div className="flex items-center justify-between">
                 <div className="flex items-center">
                     <div className="p-3 rounded-full bg-white shadow-md">
                         {icon}
                     </div>
                     <div className="ml-4">
-                        <h3 className="text-lg font-semibold text-gray-700">
+                        <h3 className={`${txSize} font-semibold ${txColor}`}>
                             {title}
                         </h3>
                         <p className="text-[9px] text-gray-600">{desc}</p>
-                        <p className="text-2xl font-bold text-gray-900">{value}</p>
+                        <p className={`text-2xl font-bold ${valColor}`}>
+                            {value}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -23,4 +33,3 @@ const StatCard = ({ title, value, icon, bgColor, children, desc }) => {
 };
 
 export default StatCard;
-

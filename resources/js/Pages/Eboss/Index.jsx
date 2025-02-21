@@ -34,13 +34,16 @@ const Index = ({ eboss, counts }) => {
             buttonRoute={route("eboss.create")}
         >
             <Head title="eBOSS" />
-            <div className="mx-auto max-w-7xl sm:px-6 lg:px-8 p-12">
+            <div className="mx-auto max-w-7xl sm:px-6 lg:px-8 p-6">
                 <div className="text-sm grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
                     {/* Fully-Automated */}
                     <StatCard
                         title={"Fully-Automated"}
                         value={fully_automated}
                         icon={<PiComputerTowerFill className="text-blue-500" />}
+                        bgColor="bg-green-500"
+                        txColor="text-white"
+                        valColor="text-white"
                     />
                     {/* Partly-Automated */}
                     <StatCard
@@ -49,6 +52,9 @@ const Index = ({ eboss, counts }) => {
                         icon={
                             <PiComputerTowerDuotone className="text-blue-500" />
                         }
+                        bgColor="bg-blue-500"
+                        txColor="text-white"
+                        valColor="text-white"
                     />
                     {/* Physical/Collocated BOSS */}
                     {/* <div className="text-sm"> */}
@@ -57,6 +63,9 @@ const Index = ({ eboss, counts }) => {
                         value={physical_collocated}
                         icon={<PiComputerTowerBold className="text-blue-500" />}
                         className="text-sm font-semibold"
+                        bgColor="bg-yellow-500"
+                        txColor="text-white"
+                        valColor="text-white"
                     />
                     {/* </div> */}
                     {/* No Collocated BOSS */}
@@ -66,6 +75,9 @@ const Index = ({ eboss, counts }) => {
                         icon={
                             <PiComputerTowerLight className="text-blue-500" />
                         }
+                        bgColor="bg-red-500"
+                        txColor="text-white"
+                        valColor="text-white"
                     />
                 </div>
                 {/* Flash message */}
@@ -144,8 +156,26 @@ const Index = ({ eboss, counts }) => {
                                                 <td className="px-6 py-4">
                                                     {eb.eboss_submission_date}
                                                 </td>
-                                                <td className="px-6 py-4">
-                                                    {eb.type_of_eboss}
+                                                <td className="px-6 py-4 whitespace-nowrap">
+                                                    <span
+                                                        className={`${
+                                                            eb.type_of_eboss ===
+                                                            "Fully-Automated"
+                                                                ? "bg-green-500"
+                                                                : eb.type_of_eboss ===
+                                                                  "Partly-Automated"
+                                                                ? "bg-blue-500"
+                                                                : eb.type_of_eboss ===
+                                                                  "Physical/Collocated BOSS"
+                                                                ? "bg-yellow-500"
+                                                                : eb.type_of_eboss ===
+                                                                  "No Collocated BOSS"
+                                                                ? "bg-red-500"
+                                                                : "bg-gray-500"
+                                                        } py-1 px-2 rounded-full text-white text-xs`}
+                                                    >
+                                                        {eb.type_of_eboss}
+                                                    </span>
                                                 </td>
                                                 <td className="px-6 py-4">
                                                     <Link

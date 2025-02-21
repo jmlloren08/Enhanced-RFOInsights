@@ -18,7 +18,9 @@ class InspectionController extends Controller
                 ->paginate(5);
             return Inertia::render('Inspection/Index', [
                 'inspection' => $inspection,
-                // 'counts' => $counts
+                'inspectionBarChart' => Inspection::with('regions')
+                    ->select('region', 'compliance_rating')
+                    ->get(),
             ]);
         } catch (\Exception $e) {
             Log::error('Error fetching inspection', ['message' => $e->getMessage()]);

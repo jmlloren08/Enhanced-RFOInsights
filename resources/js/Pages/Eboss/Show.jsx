@@ -86,7 +86,25 @@ const Show = ({ eboss }) => {
                                 Type of eBOSS
                             </dt>
                             <dd className="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                {eboss.type_of_eboss}
+                                <span
+                                    className={`${
+                                        eboss.type_of_eboss ===
+                                        "Fully-Automated"
+                                            ? "bg-green-500"
+                                            : eboss.type_of_eboss ===
+                                              "Partly-Automated"
+                                            ? "bg-blue-500"
+                                            : eboss.type_of_eboss ===
+                                              "Physical/Collocated BOSS"
+                                            ? "bg-yellow-500"
+                                            : eboss.type_of_eboss ===
+                                              "No Collocated BOSS"
+                                            ? "bg-red-500"
+                                            : "bg-gray-500"
+                                    } py-1 px-2 rounded-full text-white`}
+                                >
+                                    {eboss.type_of_eboss}
+                                </span>
                             </dd>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">

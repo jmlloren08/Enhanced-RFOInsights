@@ -18,7 +18,8 @@ class OrientationController extends Controller
                 ->paginate(5);
             return Inertia::render('Orientation/Index', [
                 'orientation' => $orientation,
-                // 'counts' => $counts
+                'orientationPieChart' => Orientation::select('type_of_participants', 'total_number_of_participants')
+                    ->get(),
             ]);
         } catch (\Exception $e) {
             Log::error('Error fetching orientation', ['message' => $e->getMessage()]);

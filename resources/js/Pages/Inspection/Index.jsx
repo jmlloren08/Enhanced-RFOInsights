@@ -2,16 +2,9 @@ import { Head, Link, usePage } from "@inertiajs/react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { useEffect, useState } from "react";
 import { EyeIcon } from "@heroicons/react/16/solid";
-import StatCard from "@/Components/Cards/StatCard";
-import {
-    PiComputerTowerFill,
-    PiComputerTowerDuotone,
-    PiComputerTowerBold,
-    PiComputerTowerLight,
-} from "react-icons/pi";
+import InspectionOutcomesChart from "@/Components/Charts/Inspection/InspectionOutcomeChart";
 
-const Index = ({ inspection, counts }) => {
-
+const Index = ({ inspection, inspectionBarChart }) => {
     const { flash } = usePage().props;
     const [flashMessage, setFlashMessage] = useState(null);
 
@@ -29,9 +22,9 @@ const Index = ({ inspection, counts }) => {
             buttonRoute={route("inspection.create")}
         >
             <Head title="Inspection" />
-            <div className="mx-auto max-w-7xl sm:px-6 lg:px-8 p-12">
-                <div className="text-sm grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                    {/* Dashboard */}
+            <div className="mx-auto max-w-7xl sm:px-6 lg:px-8 p-6">
+                <div className="text-sm grid grid-cols-1">
+                    <InspectionOutcomesChart data={inspectionBarChart} />
                 </div>
                 {/* Flash message */}
                 {flashMessage && (
@@ -107,7 +100,9 @@ const Index = ({ inspection, counts }) => {
                                                     {ins.cities.name}
                                                 </td>
                                                 <td className="px-6 py-4">
-                                                    {ins.department_office_inspected}
+                                                    {
+                                                        ins.department_office_inspected
+                                                    }
                                                 </td>
                                                 <td className="px-6 py-4">
                                                     {ins.compliance_rating}

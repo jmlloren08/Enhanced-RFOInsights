@@ -4,10 +4,6 @@ import {
     Disclosure,
     DisclosureButton,
     DisclosurePanel,
-    Menu,
-    MenuButton,
-    MenuItem,
-    MenuItems,
 } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/20/solid";
 import { Link, usePage } from "@inertiajs/react";
@@ -18,7 +14,6 @@ function classNames(...classes) {
 
 export default function AuthenticatedLayout({
     header,
-    ptag,
     children,
     buttonText,
     buttonRoute,
@@ -105,8 +100,8 @@ export default function AuthenticatedLayout({
                                                     Open user menu
                                                 </span>
                                                 <img
-                                                    alt=""
-                                                    src={user.imageUrl}
+                                                    src="/images/icons/user.png"
+                                                    alt="Avatar Logo"
                                                     className="size-8 rounded-full"
                                                 />
                                             </button>
@@ -184,8 +179,8 @@ export default function AuthenticatedLayout({
                             <div className="flex items-center px-5">
                                 <div className="shrink-0">
                                     <img
-                                        alt=""
-                                        src={user.imageUrl}
+                                        src="/images/icons/user.png"
+                                        alt="Avatar Logo"
                                         className="size-10 rounded-full"
                                     />
                                 </div>

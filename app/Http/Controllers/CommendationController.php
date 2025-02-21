@@ -19,6 +19,16 @@ class CommendationController extends Controller
                 ->paginate(5);
             return Inertia::render('Commendation/Index', [
                 'commendation' => $commendation,
+                'commendationLineChart' => Commendation::selectRaw('MONTHNAME(date_of_commendation) as month, MONTH(date_of_commendation) as month_number, COUNT(*) as count')
+                    ->groupByRaw('MONTHNAME(date_of_commendation), MONTH(date_of_commendation)')
+                    ->orderByRaw('MONTH(date_of_commendation)')
+                    ->get()
+                    ->map(function ($comm) {
+                        return [
+                            'month' => $comm->month,
+                            'count' => $comm->count,
+                        ];
+                    })->values(),
                 // 'counts' => $counts
             ]);
         } catch (\Exception $e) {

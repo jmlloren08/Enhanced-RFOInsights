@@ -31,7 +31,8 @@ const Show = ({ commendation }) => {
             <div>
                 <div className="px-4 sm:px-0">
                     <h3 className="text-base/7 font-semibold text-gray-900">
-                    Commendation (Recognizing LGUs for 100% compliance and full automation of eBOSS)
+                        Commendation (Recognizing LGUs for 100% compliance and
+                        full automation of eBOSS)
                     </h3>
                     <p className="mt-1 max-w-2xl text-sm/6 text-gray-500">
                         Explore comprehensive details and insights about the
@@ -78,7 +79,25 @@ const Show = ({ commendation }) => {
                                 Type of eBOSS
                             </dt>
                             <dd className="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                {commendation.type_of_eboss}
+                                <span
+                                    className={`${
+                                        commendation.type_of_eboss ===
+                                        "Fully-Automated"
+                                            ? "bg-green-500"
+                                            : commendation.type_of_eboss ===
+                                              "Partly-Automated"
+                                            ? "bg-blue-500"
+                                            : commendation.type_of_eboss ===
+                                              "Physical/Collocated BOSS"
+                                            ? "bg-yellow-500"
+                                            : commendation.type_of_eboss ===
+                                              "No Collocated BOSS"
+                                            ? "bg-red-500"
+                                            : "bg-gray-500"
+                                    } py-1 px-2 rounded-full text-white`}
+                                >
+                                    {commendation.type_of_eboss}
+                                </span>
                             </dd>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -86,7 +105,19 @@ const Show = ({ commendation }) => {
                                 Certification Status (Certified/Not-Certified)
                             </dt>
                             <dd className="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                {commendation.certification_status}
+                                <span
+                                    className={`${
+                                        commendation.certification_status ===
+                                        "Certified"
+                                            ? "bg-green-500 bg-opacity-25 border border-green-500 text-green-500"
+                                            : commendation.certification_status ===
+                                              "Not-Certified"
+                                            ? "bg-yellow-500 bg-opacity-25 border border-yellow-500 text-yellow-500"
+                                            : "bg-gray-500"
+                                    } py-1 px-2 rounded-full text-white text-xs`}
+                                >
+                                    {commendation.certification_status}
+                                </span>
                             </dd>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">

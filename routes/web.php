@@ -2,32 +2,22 @@
 
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\CommendationController;
-use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EbossInspectionController;
 use App\Http\Controllers\InspectionController;
-use App\Http\Controllers\LeadController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\OrientationController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\TaskController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+    return Inertia::render('Welcome');
+})->name('welcome');
 
 Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/auth/verified/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/auth/verified/notifications', [NotificationController::class, 'index']);
     Route::get('/auth/verified/get-provinces-by-region', [AddressController::class, 'getProvincesByRegion']);
     Route::get('/auth/verified/get-cities-by-province', [AddressController::class, 'getCitiesByProvince']);
 

@@ -36,7 +36,7 @@ const Dashboard = ({
             setLoading(false);
         }
     }, [totalEboss, totalCommendation, totalInspection, totalOrientation]);
-    
+
     return (
         <AuthenticatedLayout header="Overall Dashboard">
             <Head title="Dashboard" />
@@ -61,6 +61,7 @@ const Dashboard = ({
                                 children={
                                     <ViewAll link={route("eboss.index")} />
                                 }
+                                txSize='text-lg'
                             />
                             {/* Commendation Stats */}
                             <StatCard
@@ -73,6 +74,7 @@ const Dashboard = ({
                                         link={route("commendation.index")}
                                     />
                                 }
+                                txSize='text-lg'
                             />
                             {/* Inspection Stats */}
                             <StatCard
@@ -85,6 +87,7 @@ const Dashboard = ({
                                 children={
                                     <ViewAll link={route("inspection.index")} />
                                 }
+                                txSize='text-lg'
                             />
                             {/* Orientation Stats */}
                             <StatCard
@@ -97,6 +100,7 @@ const Dashboard = ({
                                         link={route("orientation.index")}
                                     />
                                 }
+                                txSize='text-lg'
                             />
                         </div>
                     </div>
@@ -113,9 +117,7 @@ const Dashboard = ({
                     <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                         <div className="mt-6 grid grid-cols-12 gap-6">
                             <div className="col-span-12 sm:col-span-8 p-6 rounded-lg shadow-md">
-                                <InspectionOutcomesChart
-                                    inspections={inspections}
-                                />
+                                <InspectionOutcomesChart data={inspections} />
                             </div>
                             <div className="col-span-12 sm:col-span-4 p-6 rounded-lg shadow-md flex flex-col">
                                 <OrientationParticipationChart

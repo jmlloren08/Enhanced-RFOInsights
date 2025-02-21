@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { EyeIcon } from "@heroicons/react/16/solid";
 import CommendationTrends from "@/Components/Charts/Commendation/CommendationTrends";
 
-const Index = ({ commendation }) => {
+const Index = ({ commendation, commendationLineChart }) => {
     const { flash } = usePage().props;
     const [flashMessage, setFlashMessage] = useState(null);
 
@@ -22,9 +22,9 @@ const Index = ({ commendation }) => {
             buttonRoute={route("commendation.create")}
         >
             <Head title="Commendation" />
-            <div className="mx-auto max-w-7xl sm:px-6 lg:px-8 p-12">
-                <div className="text-sm grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                    {/* dashboard here */}
+            <div className="mx-auto max-w-7xl sm:px-6 lg:px-8 p-6">
+                <div className="text-sm grid grid-cols-1 p-6 rounded-lg shadow-md">
+                    <CommendationTrends data={commendationLineChart} />
                 </div>
                 {/* Flash message */}
                 {flashMessage && (
@@ -102,13 +102,45 @@ const Index = ({ commendation }) => {
                                                     <td className="px-6 py-4">
                                                         {commend.cities.name}
                                                     </td>
-                                                    <td className="px-6 py-4">
-                                                        {commend.type_of_eboss}
+                                                    <td className="px-6 py-4 whitespace-nowrap">
+                                                        <span
+                                                            className={`${
+                                                                commend.type_of_eboss ===
+                                                                "Fully-Automated"
+                                                                    ? "bg-green-500"
+                                                                    : commend.type_of_eboss ===
+                                                                      "Partly-Automated"
+                                                                    ? "bg-blue-500"
+                                                                    : commend.type_of_eboss ===
+                                                                      "Physical/Collocated BOSS"
+                                                                    ? "bg-yellow-500"
+                                                                    : commend.type_of_eboss ===
+                                                                      "No Collocated BOSS"
+                                                                    ? "bg-red-500"
+                                                                    : "bg-gray-500"
+                                                            } py-1 px-2 rounded-full text-white text-xs`}
+                                                        >
+                                                            {
+                                                                commend.type_of_eboss
+                                                            }
+                                                        </span>
                                                     </td>
                                                     <td className="px-6 py-4">
-                                                        {
-                                                            commend.certification_status
-                                                        }
+                                                        <span
+                                                            className={`${
+                                                                commend.certification_status ===
+                                                                "Certified"
+                                                                    ? "bg-green-500 bg-opacity-25 border border-green-500 text-green-500"
+                                                                    : commend.certification_status ===
+                                                                      "Not-Certified"
+                                                                    ? "bg-yellow-500 bg-opacity-25 border border-yellow-500 text-yellow-500"
+                                                                    : "bg-gray-500"
+                                                            } py-1 px-2 rounded-full text-white text-xs`}
+                                                        >
+                                                            {
+                                                                commend.certification_status
+                                                            }
+                                                        </span>
                                                     </td>
                                                     <td className="px-6 py-4">
                                                         <Link
@@ -136,6 +168,7 @@ const Index = ({ commendation }) => {
                                         <li key={index}>
                                             {link.url ? (
                                                 <Link
+                                                    preserveScroll
                                                     href={link.url}
                                                     className={`inline-flex size-8 items-center justify-center rounded border ${
                                                         link.active

@@ -1,8 +1,8 @@
 import React from "react";
 import Chart from "react-apexcharts";
 
-const InspectionOutcomesChart = ({ inspections }) => {
-    const groupedData = inspections.reduce((acc, inspection) => {
+const InspectionOutcomesChart = ({ data }) => {
+    const groupedData = data.reduce((acc, inspection) => {
         const office = inspection.regions.name;
         if (!acc[office]) {
             acc[office] = {
@@ -19,10 +19,8 @@ const InspectionOutcomesChart = ({ inspections }) => {
             acc[office].non_compliant++;
         return acc;
     }, {});
-
     // Extract categories (LGU Offices)
     const categories = Object.keys(groupedData);
-
     // Prepare series data
     const chartSeries = [
         {
@@ -48,7 +46,7 @@ const InspectionOutcomesChart = ({ inspections }) => {
             toolbar: { show: false },
         },
         plotOptions: {
-            bar: { horizontal: false, columnWidth: "60%" },
+            bar: { horizontal: false },
         },
         xaxis: {
             categories,
