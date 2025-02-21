@@ -125,22 +125,15 @@ const Index = ({ commendation, commendationLineChart }) => {
                                                             }
                                                         </span>
                                                     </td>
-                                                    <td className="px-6 py-4">
-                                                        <span
-                                                            className={`${
-                                                                commend.certification_status ===
-                                                                "Certified"
-                                                                    ? "bg-green-500 bg-opacity-25 border border-green-500 text-green-500"
-                                                                    : commend.certification_status ===
-                                                                      "Not-Certified"
-                                                                    ? "bg-yellow-500 bg-opacity-25 border border-yellow-500 text-yellow-500"
-                                                                    : "bg-gray-500"
-                                                            } py-1 px-2 rounded-full text-white text-xs`}
-                                                        >
-                                                            {
-                                                                commend.certification_status
-                                                            }
-                                                        </span>
+                                                    <td className="px-6 py-4 whitespace-nowrap">
+                                                        {commend.certification_status ===
+                                                            "Certified"
+                                                            ? `✅ ${commend.certification_status}`
+                                                            : commend.certification_status ===
+                                                              "Not-Certified"
+                                                            ? `❌ ${commend.certification_status}`
+                                                            : "N/A"
+                                                        }
                                                     </td>
                                                     <td className="px-6 py-4">
                                                         <Link

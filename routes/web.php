@@ -5,7 +5,6 @@ use App\Http\Controllers\CommendationController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EbossInspectionController;
 use App\Http\Controllers\InspectionController;
-use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\OrientationController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
