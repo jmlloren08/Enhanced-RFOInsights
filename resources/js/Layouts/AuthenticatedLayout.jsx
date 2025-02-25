@@ -17,6 +17,7 @@ export default function AuthenticatedLayout({
     children,
     buttonText,
     buttonRoute,
+    filterRegion,
 }) {
     const user = usePage().props.auth.user;
     const { url } = usePage();
@@ -221,7 +222,6 @@ export default function AuthenticatedLayout({
                         </div>
                     </DisclosurePanel>
                 </Disclosure>
-
                 <header className="bg-white shadow-sm">
                     <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
                         <div className="flex items-center justify-between">
@@ -237,6 +237,7 @@ export default function AuthenticatedLayout({
                                         {buttonText}
                                     </Link>
                                 )}
+                            {filterRegion}
                         </div>
                     </div>
                 </header>

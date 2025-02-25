@@ -4,7 +4,6 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 
 const Create = ({ regions }) => {
-
     const { flash } = usePage().props;
     const { data, setData, post, processing, errors } = useForm({
         date_of_commendation: "",
@@ -101,6 +100,7 @@ const Create = ({ regions }) => {
             <Head title="Commendation" />
             <div className="mx-auto max-w-7xl space-y-6 sm:px-6 lg:px-8">
                 <form onSubmit={submit}>
+                    @csrf
                     <div className="space-y-12">
                         <div className="border-b border-gray-900/10 pb-12">
                             <div className="border-b border-gray-900/10 pb-12">
@@ -452,7 +452,9 @@ const Create = ({ regions }) => {
                                         <input
                                             type="text"
                                             placeholder="Signatory or Approving Officer"
-                                            value={data.signatory_approving_officer}
+                                            value={
+                                                data.signatory_approving_officer
+                                            }
                                             onChange={(e) =>
                                                 setData(
                                                     "signatory_approving_officer",

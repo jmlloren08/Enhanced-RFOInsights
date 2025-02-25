@@ -109,6 +109,7 @@ const Create = ({ regions }) => {
             <Head title="Inspection" />
             <div className="mx-auto max-w-7xl space-y-6 sm:px-6 lg:px-8">
                 <form onSubmit={submit}>
+                    @csrf
                     <div className="space-y-12">
                         <div className="border-b border-gray-900/10 pb-12">
                             <div className="border-b border-gray-900/10 pb-12">

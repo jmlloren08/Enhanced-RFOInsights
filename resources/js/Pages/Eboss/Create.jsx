@@ -4,7 +4,6 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 
 const Create = ({ regions }) => {
-    
     const { flash } = usePage().props;
     const { data, setData, post, processing, errors } = useForm({
         date_of_inspection: "",

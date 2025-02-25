@@ -5,7 +5,7 @@ import InspectionOutcomesChart from "@/Components/Charts/Inspection/InspectionOu
 import OrientationParticipationChart from "@/Components/Charts/Orientation/OrientationParticipantPieChart";
 import ViewAll from "@/Components/Links/ViewAll";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Head } from "@inertiajs/react";
+import { Head, router, usePage } from "@inertiajs/react";
 import { useEffect, useState } from "react";
 import {
     FaAward,
@@ -23,8 +23,22 @@ const Dashboard = ({
     commendations,
     inspections,
     orientations,
+    regions,
+    selectedRegion,
 }) => {
     const [loading, setLoading] = useState(true);
+    // const { selectedRegion } = usePage().props;
+    const [region, setRegion] = useState(selectedRegion || "");
+    // handle region change
+    const handleRegionChange = (regionId) => {
+        setRegion(regionId);
+        router.visit(route("dashboard", { region_id: regionId }), {
+            preserveState: true,
+            replace: true,
+            onStart: () => setLoading(true),
+            onFinish: () => setLoading(false),
+        });
+    };
 
     useEffect(() => {
         if (
@@ -38,7 +52,29 @@ const Dashboard = ({
     }, [totalEboss, totalCommendation, totalInspection, totalOrientation]);
 
     return (
-        <AuthenticatedLayout header="Overall Dashboard">
+        <AuthenticatedLayout
+            header="Overall Dashboard"
+            filterRegion={
+                <div className="flex items-center justify-end gap-2">
+                    <label>Filter by: </label>
+                    <div className="w-1/2">
+                        <select
+                            className="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            onChange={(e) => {
+                                handleRegionChange(e.target.value);
+                            }}
+                        >
+                            <option value="">All</option>
+                            {regions.map((region, index) => (
+                                <option key={index} value={region.id}>
+                                    {region.name}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                </div>
+            }
+        >
             <Head title="Dashboard" />
             {loading ? (
                 <div className="flex items-center justify-center space-x-2">
@@ -61,7 +97,7 @@ const Dashboard = ({
                                 children={
                                     <ViewAll link={route("eboss.index")} />
                                 }
-                                txSize='text-lg'
+                                txSize="text-lg"
                             />
                             {/* Commendation Stats */}
                             <StatCard
@@ -74,7 +110,7 @@ const Dashboard = ({
                                         link={route("commendation.index")}
                                     />
                                 }
-                                txSize='text-lg'
+                                txSize="text-lg"
                             />
                             {/* Inspection Stats */}
                             <StatCard
@@ -87,7 +123,7 @@ const Dashboard = ({
                                 children={
                                     <ViewAll link={route("inspection.index")} />
                                 }
-                                txSize='text-lg'
+                                txSize="text-lg"
                             />
                             {/* Orientation Stats */}
                             <StatCard
@@ -100,7 +136,7 @@ const Dashboard = ({
                                         link={route("orientation.index")}
                                     />
                                 }
-                                txSize='text-lg'
+                                txSize="text-lg"
                             />
                         </div>
                     </div>

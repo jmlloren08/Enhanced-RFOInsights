@@ -20,11 +20,10 @@ class DatabaseSeeder extends Seeder
         //     'password' => bcrypt('password'),
         // ]);
 
-        User::factory(10)->create([
-            'password' => bcrypt('password'),
-            'email' => function () {
-                return sprintf('%s@arta.gov.ph', Str::random(5));
-            },
+        User::factory()->create([
+            'name' => 'Dr. Karl Joseph D. Sanmocte',
+            'email' => 'karljosephsanmocte@arta.gov.ph',
+            'password' => bcrypt('DKJReRF70'),
         ]);
     }
 }

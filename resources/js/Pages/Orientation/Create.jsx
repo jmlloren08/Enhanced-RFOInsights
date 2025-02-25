@@ -4,7 +4,6 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 
 const Create = ({ regions }) => {
-    
     const { flash } = usePage().props;
     const { data, setData, post, processing, errors } = useForm({
         date_of_orientation: "",
@@ -105,6 +104,7 @@ const Create = ({ regions }) => {
             <Head title="Orientation" />
             <div className="mx-auto max-w-7xl space-y-6 sm:px-6 lg:px-8">
                 <form onSubmit={submit}>
+                    @csrf
                     <div className="space-y-12">
                         <div className="border-b border-gray-900/10 pb-12">
                             <div className="border-b border-gray-900/10 pb-12">
@@ -126,9 +126,7 @@ const Create = ({ regions }) => {
                                 </p>
                                 <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                                     <div className="sm:col-span-2 sm:col-start-1">
-                                        <label
-                                            className="block text-sm/6 font-medium text-gray-900"
-                                        >
+                                        <label className="block text-sm/6 font-medium text-gray-900">
                                             Date of Orientation{" "}
                                             <span
                                                 className="text-red-500"
@@ -154,9 +152,7 @@ const Create = ({ regions }) => {
                                         </div>
                                     </div>
                                     <div className="sm:col-span-2">
-                                        <label
-                                            className="block text-sm/6 font-medium text-gray-900"
-                                        >
+                                        <label className="block text-sm/6 font-medium text-gray-900">
                                             LGU/Office Name{" "}
                                             <span
                                                 className="text-red-500"
@@ -181,9 +177,7 @@ const Create = ({ regions }) => {
                                         </div>
                                     </div>
                                     <div className="sm:col-span-2 sm:col-start-1">
-                                        <label
-                                            className="block text-sm/6 font-medium text-gray-900"
-                                        >
+                                        <label className="block text-sm/6 font-medium text-gray-900">
                                             Region{" "}
                                             <span
                                                 className="text-red-500"
@@ -219,9 +213,7 @@ const Create = ({ regions }) => {
                                         </div>
                                     </div>
                                     <div className="sm:col-span-2">
-                                        <label
-                                            className="block text-sm/6 font-medium text-gray-900"
-                                        >
+                                        <label className="block text-sm/6 font-medium text-gray-900">
                                             State / Province{" "}
                                             <span
                                                 className="text-red-500"
@@ -257,9 +249,7 @@ const Create = ({ regions }) => {
                                         </div>
                                     </div>
                                     <div className="sm:col-span-2">
-                                        <label
-                                            className="block text-sm/6 font-medium text-gray-900"
-                                        >
+                                        <label className="block text-sm/6 font-medium text-gray-900">
                                             City / Municipality{" "}
                                             <span
                                                 className="text-red-500"
@@ -301,9 +291,7 @@ const Create = ({ regions }) => {
                                         </div>
                                     </div>
                                     <div className="sm:col-span-3">
-                                        <label
-                                            className="block text-sm/6 font-medium text-gray-900"
-                                        >
+                                        <label className="block text-sm/6 font-medium text-gray-900">
                                             Type of Participants{" "}
                                             <span
                                                 className="text-red-500"
@@ -327,10 +315,7 @@ const Create = ({ regions }) => {
                                                 className="col-start-1 row-start-1 appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                                                 defaultValue="Select one"
                                             >
-                                                <option
-                                                    value=""
-                                                    disabled
-                                                >
+                                                <option value="" disabled>
                                                     Select one
                                                 </option>
                                                 <option value="BPLO Staff">
@@ -390,9 +375,7 @@ const Create = ({ regions }) => {
                                         </div>
                                     </div>
                                     <div className="sm:col-span-3">
-                                        <label
-                                            className="block text-sm/6 font-medium text-gray-900"
-                                        >
+                                        <label className="block text-sm/6 font-medium text-gray-900">
                                             Total Number of Participants{" "}
                                             <span
                                                 className="text-red-500"
@@ -420,9 +403,7 @@ const Create = ({ regions }) => {
                                         </div>
                                     </div>
                                     <div className="sm:col-span-3">
-                                        <label
-                                            className="block text-sm/6 font-medium text-gray-900"
-                                        >
+                                        <label className="block text-sm/6 font-medium text-gray-900">
                                             Training Mode{" "}
                                             <span
                                                 className="text-red-500"
@@ -460,9 +441,7 @@ const Create = ({ regions }) => {
                                         </div>
                                     </div>
                                     <div className="col-span-full">
-                                        <label
-                                            className="block text-sm/6 font-medium text-gray-900"
-                                        >
+                                        <label className="block text-sm/6 font-medium text-gray-900">
                                             Key Topics Discussed{" "}
                                             <span
                                                 className="text-red-500"
@@ -489,9 +468,7 @@ const Create = ({ regions }) => {
                                         </div>
                                     </div>
                                     <div className="sm:col-span-3">
-                                        <label
-                                            className="block text-sm/6 font-medium text-gray-900"
-                                        >
+                                        <label className="block text-sm/6 font-medium text-gray-900">
                                             Resource Speaker(s){" "}
                                             <span
                                                 className="text-red-500"
@@ -519,9 +496,7 @@ const Create = ({ regions }) => {
                             </div>
                             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                                 <div className="col-span-full">
-                                    <label
-                                        className="block text-sm/6 font-medium text-gray-900"
-                                    >
+                                    <label className="block text-sm/6 font-medium text-gray-900">
                                         Feedback/Assessment of Training (Rating
                                         or Comments)
                                     </label>
@@ -549,9 +524,7 @@ const Create = ({ regions }) => {
                                     </p>
                                 </div>
                                 <div className="col-span-full">
-                                    <label
-                                        className="block text-sm/6 font-medium text-gray-900"
-                                    >
+                                    <label className="block text-sm/6 font-medium text-gray-900">
                                         Attachment{" "}
                                         <span className="text-xs font-normal text-gray-500">
                                             (Minimum of 2MB)
